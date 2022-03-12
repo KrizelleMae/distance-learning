@@ -1,3 +1,7 @@
+<?php 
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,6 +17,7 @@
       <div class="p-16 shadow rounded-lg w-1/3">
         <div class="text-2xl font-semibold uppercase text-center mb-10">
           OTP Login
+          <?php echo $_SESSION['temp_id']; ?>
         </div>
         <form action="./server/validate_otp.php" method="POST">
           <input

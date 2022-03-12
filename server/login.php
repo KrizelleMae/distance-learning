@@ -1,8 +1,7 @@
 <?php
    include ("../includes/db_connection.php");
    session_start();
-   echo $_POST['username'];
-
+   
    if(isset($_POST['email'])){
        $email = $_POST['email'];
        $password = $_POST['password'];
@@ -22,10 +21,26 @@
                     $_SESSION['role'] = $row["role"];
                     header("location: ../admin/");
                 } else if ($row["role"] == "student"){
-                    $_SESSION['email'] = $row["email"];
-                    $_SESSION['id'] = $row["id"];
                     
-                    header("location: ../student/");
+                    if($row['verified'] == 1){
+
+                        $_SESSION['email'] = $row["email"];
+                        $_SESSION['id'] = $row["id"];
+                        $_SESSION['first_name'] = $row["first_name"];
+                        $_SESSION['last_name'] = $row["last_name"];
+
+                        mysqli_query($con, "delete from otp where expired = 1;");
+                        header("location: ../student/");
+
+                    }else {
+
+                        $_SESSION['temp_id'] = $row["id"];
+                        header("location: ../otp.php");
+
+                    }
+                    
+                    
+                    
                 }else{
                    echo "<br/> Not admin";
                 }

@@ -10,13 +10,6 @@
      use PHPMailer\PHPMailer\SMTP;
 	use PHPMailer\PHPMailer\Exception;
 
-
-     //START HERE
-     $email = $_POST['email'];
-     
-     $generate_otp = rand(100000, 999999);
-
-
           //Create instance of PHPMailer
 	     $mail = new PHPMailer();
          
@@ -70,10 +63,10 @@
           if(!$mail->send()){
               echo "Invalid email";
           } else {
-               $sql = mysqli_query($con, "insert into otp (otp, user_id) values ($generate_otp, 3)");
+               $sql = mysqli_query($con, "insert into otp (otp, user_id) values ($generate_otp,  $user_id)");
                if($sql){
-                    echo '<script>alert("Email sent!")</script>';
-                    header("location: ../otp.html");
+                    $_SESSION['temp_id'] = $user_id;
+                    header("location: ../otp.php");
                }
           }
 
