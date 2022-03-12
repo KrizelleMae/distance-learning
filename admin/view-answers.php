@@ -79,24 +79,9 @@ while($row = mysqli_fetch_assoc($result)) {
       </div>
 
       <div class="my-16 float-right">
-        <?php if ($row['status'] == "approved") {
-          echo 'approved'; 
-        } else {
-          echo '<a
-                    href="../server/status.php?id=<?php echo $user_id;?>"
-                    class=" px-6 py-3 bg-green-600 text-white rounded mr-3 hover:bg-green-700 hover:no-underline hover:text-white"
-                    id="btn-approve"
-                  >
-                    <i class="fa fa-thumbs-up"></i> &nbsp; Approve application
-                  </a>
-
-                  <a
-                    class="px-6 py-3 bg-red-600 text-white rounded hover:bg-red-800 hover:no-underline hover:text-white"
-                    id="btn-decline"
-                  >
-                    <i class="fa fa-ban"></i> &nbsp; Decline
-                  </a>';
-        } ?>
+       <?php if($row['status'] == "pending"){
+         echo 'pending'; 
+       } ?>
       </div>
     </div>
 

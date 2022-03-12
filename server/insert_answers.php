@@ -16,7 +16,7 @@ include '../includes/db_connection.php';
     if($sql){
         $query = mysqli_query($con, "insert into application(program, date_applied, date_approved, user_id) values('Education', '$date', '------', $user_id);");
         if($query){
-            mysqli_query($con, "update users set status = 'application' where id = $user_id;");
+            mysqli_query($con, "update users set status = 'pending' where id = $user_id;");
             
             header("location:../student/");
         }

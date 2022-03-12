@@ -85,7 +85,7 @@ $result = mysqli_query($con, $sql);
                 </td>
 
                 <td class="px-5 py-5 whitespace-nowrap text-md text-gray-900">
-                  <div class="text-sm text-gray-900"><?php echo $row['contact']; ?></div>
+                  <div class="text-sm text-gray-900"><?php echo $row['mobile']; ?></div>
                 </td>
 
                 <td class="px-5 py-3 whitespace-nowrap">
