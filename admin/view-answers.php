@@ -79,9 +79,7 @@ while($row = mysqli_fetch_assoc($result)) {
       </div>
 
       <div class="my-16 float-right">
-       <?php if($row['status'] == "pending"){
-         echo 'pending'; 
-       } ?>
+       <a href="" id="btn-approve">Approved</a>
       </div>
     </div>
 

@@ -3,8 +3,7 @@ session_start();
 include '../includes/db_connection.php';
 
     $user_id = $_SESSION['id'];
-    $first_name = $_POST['first_name'];
-    $last_name = $_POST['last_name'];
+
     $birthdate = date($_POST['birthdate']);
     $gender = $_POST['gender'];
     $civil = $_POST['civil'];
@@ -18,8 +17,7 @@ include '../includes/db_connection.php';
     $degree = $_POST['degree'];
 
     $sql = mysqli_query($con, 
-    "insert into user_details(user_id, first_name, last_name, birthdate, gender, civil_stat, email, mobile, tel, barangay, city, country, university, degree) 
-    values('$user_id', '$first_name', '$last_name', '$birthdate', '$gender', '$civil', '$email', '$mobile', '$tel', '$barangay', '$city', '$country', '$university', '$degree');");
+    "update user_details set birthdate = '$birthdate', gender = '$gender', civil_stat = '$civil', email = '$email', mobile = '$mobile', tel = '$tel', barangay = '$barangay', city = '$city', country = '$country', university = '$university', degree = '$degree' where user_id = $user_id;");
 
 
     if($sql){

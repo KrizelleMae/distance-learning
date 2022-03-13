@@ -1,7 +1,7 @@
 
 <?php 
 
-$sql = "select * from user_details INNER JOIN application ON user_details.user_id = application.user_id; ";
+$sql = "select * from user_details INNER JOIN application ON user_details.user_id = application.user_id where status = 'pending' ; ";
 $result = mysqli_query($con, $sql);
 
 ?>

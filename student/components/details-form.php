@@ -53,6 +53,14 @@
   Personal Details
 </div>
 
+<?php
+
+  $sql = mysqli_query($con, "Select * from user_details where user_id = $user_id limit 1;");
+
+  while($row = mysqli_fetch_assoc($sql)){  
+  
+?>
+
 <form action="../server/insert-details.php" method="POST">
   <div class="grid xl:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1">
     <div class="mb-10 grid-col xl:mr-16 md:mr-6">
@@ -62,9 +70,10 @@
       <input
         type="text"
         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
-        placeholder="John Doe"
+        
         name="first_name"
-        required
+        value="<?php echo $row['first_name']; ?>"
+        disabled
       />
     </div>
     <div class="mb-10 grid-col">
@@ -74,9 +83,10 @@
       <input
         type="text"
         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
-        placeholder="John Doe"
+        
         name="last_name"
-        required
+          value="<?php echo $row['last_name']; ?>"
+        disabled
       />
     </div>
   </div>
@@ -139,7 +149,7 @@
   <div class="grid xl:grid-cols-2">
     <div class="col-span-1 xl:mr-10 md:mr-0 mb-10">
       <label class="block mb-2 text-sm font-medium text-gray-700"
-        >Email address</label
+        >Alternative Email</label
       >
       <input
         type="text"
@@ -277,3 +287,8 @@
     />
   </div>
 </form>
+
+<?php
+  }
+
+  ?>
